@@ -1,7 +1,10 @@
 import { Router } from "express";
-import { listarAutores, buscarAutorPorId, criarAutor, atulizarAutor, deletarAutor } from "../controllers/autorController";
+import { listarAutores, buscarAutorPorId, criarAutor, atulizarAutor, deletarAutor, listarLivrosPorAutor } from "../controllers/autorController";
 
 const rota = Router()
+
+//Rota especifica
+rota.get('/:id/livros', listarLivrosPorAutor);
 
 rota.get('/', listarAutores);
 rota.get('/:id', buscarAutorPorId);

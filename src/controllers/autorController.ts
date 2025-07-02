@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import autores from '../data/autores';
 import { Autor } from '../types/entities';
+import livros from '../data/livros';
 
 let proximoId = 4;
 
@@ -53,3 +54,22 @@ export const deletarAutor = (req: Request, res: Response) => {
     autores.splice(index, 1);
     res.status(204).send();
 }
+
+//Listar livros por Autor
+export const listarLivrosPorAutor = (req: Request, res: Response): void => {
+    const {id} = req.params;
+    const autorId = parseInt(id);
+
+    //Verifica se autor existe
+    const autor = autores.find( a => a.id === autorId);
+    if (!autor) {
+        res.status(404).json({message: "Autor não encontrado"});
+        return;
+    }
+
+    //Filtragem de livro por autor
+    const livrosDoAutor = livros.filter(livro => livro.autorId === autorId);
+
+    //Retorna lista
+    res.json(livrosDoAutor);
+};
