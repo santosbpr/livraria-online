@@ -35,7 +35,7 @@ export const atulizarAutor = (req: Request, res: Response) => {
     const index = autores.findIndex(l => l.id === id);
 
     if (index === -1) {
-        res.status(404).json({messege: "Autor não encontrado"});
+        res.status(404).json({message: "Autor não encontrado"});
     }
 
     autores[index] = {...autores[index], nome, nacionalidade};
@@ -48,11 +48,13 @@ export const deletarAutor = (req: Request, res: Response) => {
     const index = autores.findIndex(l => l.id == id);
 
     if (index === -1) {
-        res.status(404).json({messege: "Autor não encontrado"});
+        res.status(404).json({message: "Autor não encontrado"});
     }
 
+    const autorDeletado = autores[index];
     autores.splice(index, 1);
-    res.status(204).send();
+
+    res.status(200).json({message: `Autor '${autorDeletado.nome}' deletado com sucesso!`});
 }
 
 //Listar livros por Autor

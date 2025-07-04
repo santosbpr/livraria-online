@@ -9,7 +9,7 @@ rota.get('/:id/livros', listarLivrosPorAutor);
 rota.get('/', listarAutores);
 rota.get('/:id', buscarAutorPorId);
 rota.post('/', criarAutor);
-//rota.put('/:id', atulizarAutor);
-//rota.delete('/:id', deletarAutor);
+rota.put('/:id', atulizarAutor);
+rota.delete('/:id', deletarAutor);
 
 export default rota;

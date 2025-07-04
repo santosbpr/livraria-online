@@ -11,10 +11,11 @@ app.use('/livros', livroRoutes);
 app.use('/autores', autorRoutes);
 
 app.get('/', (req: Request, res: Response) => {
-    res.send('Bem-vino à API da Livraria Online');
+    res.send('Bem-vindo à API da Livraria Online');
 });
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta http://localhost:${PORT}`);
 });
 
+export default app;
